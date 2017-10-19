@@ -1,10 +1,11 @@
 package co.miniforge.corey.stringanalyzer;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 public class AnalyzerActivity extends AppCompatActivity {
@@ -48,15 +49,15 @@ public class AnalyzerActivity extends AppCompatActivity {
         this.backToInputButton = (Button) findViewById(R.id.backToInputButton);
     }
 
-    void getIntentData(){
-        if(getIntent().hasExtra(InputActivity.intentTag)){
+    void getIntentData() {
+        if (getIntent().hasExtra(InputActivity.intentTag)) {
             this.message = getIntent().getStringExtra(InputActivity.intentTag);
 
             //Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
         }
     }
 
-    void bindData(){
+    void bindData() {
         messageTextView.setText(message);
 
         characterCount.setText(String.format("Character Count: %d", textUtil.getTextCharacterCount()));
@@ -65,5 +66,14 @@ public class AnalyzerActivity extends AppCompatActivity {
         specialCharactersCount.setText(String.format("Special Characters: %d", textUtil.getSpecialCharacterCount()));
         uniqueWords.setText(String.format("Unique Words: " + textUtil.getUniqueWords()));
         longestWord.setText(String.format("Longest Word: " + textUtil.getLongestWord()));
+
+        backToInputButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), InputActivity.class);
+                startActivity(intent);
+            }
+
+        });
     }
 }
