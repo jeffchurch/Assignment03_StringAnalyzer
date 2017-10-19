@@ -63,5 +63,7 @@ public class AnalyzerActivity extends AppCompatActivity {
         wordCount.setText(String.format("Word Count: %d", textUtil.getWordCount()));
         uniqueCharacters.setText(String.format("Unique Characters: %d", textUtil.getUniqueCharacters()));
         specialCharactersCount.setText(String.format("Special Characters: %d", textUtil.getSpecialCharacterCount()));
+        uniqueWords.setText(String.format("Unique Words: " + textUtil.getUniqueWords()));
+        longestWord.setText(String.format("Longest Word: " + textUtil.getLongestWord()));
     }
 }
